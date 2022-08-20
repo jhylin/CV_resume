@@ -1,0 +1,212 @@
+---
+title: "Jennifer HY Lin's CV"
+author: Jennifer HY Lin
+date: "`r Sys.Date()`"
+params:
+  pdf_mode:
+    value: true
+output:
+  pagedown::html_resume:
+    css: ['dd_cv.css', 'resume']
+    self_contained: true
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  results='asis', 
+  echo = FALSE
+)
+
+library(magrittr) # For the pipe
+source("cv_printing_functions.r")
+
+# Read in all data and initialize a CV printer object
+CV <- create_CV_object(
+  data_location = "https://docs.google.com/spreadsheets/d/1VIT-4a6PajdSqnyGUusqlJO676NtjY4zVj9Jvy8FAXc/edit#gid=917338460",  
+  pdf_mode = params$pdf_mode
+)
+```
+
+
+```{r}
+# When in pdf export mode the little dots are unaligned, so fix that with some conditional CSS.
+if(params$pdf_mode) {
+    cat("
+<style>
+:root{
+  --decorator-outer-offset-left: -6.5px;
+}
+</style>")
+}
+```
+
+
+Aside
+================================================================================
+
+```{r}
+# # Build interactive network of positions colored by section
+# # and connected if they occurred in the same year
+# datadrivencv::build_network_logo(CV$entries_data)
+```
+
+
+```{r}
+# if(params$pdf_mode){
+#   cat("View this CV online with links at _jhylin.github.io/Portfolio-projects/Resume_JHYL.html_")
+# } else {
+#   cat("[<i class='fas fa-download'></i> Download a PDF of this CV](https://github.com/jhylin/Portfolio-projects/Resume_JHYL.pdf)")
+# }
+```
+
+Contact {#contact}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %>% print_contact_info()
+```
+
+
+
+Analytics Skills {#skills}
+--------------------------------------------------------------------------------
+* Python
+* SQL
+* R
+* Matplotlib
+* Plotly Dash
+* ggplot2
+* Tableau
+* Git
+```{r}
+#CV %>% print_skill_bars()
+```
+
+
+
+Disclaimer {#disclaimer}
+--------------------------------------------------------------------------------
+
+Made with the R package [**pagedown**](https://github.com/rstudio/pagedown). 
+
+The source code is available on [GitHub](https://github.com/nstrayer/cv).
+
+Acknowledgement to another helpful source on [GitHub](https://github.com/shaziaruybal/automate-cv-rmd)
+
+Last updated on `r Sys.Date()`.
+
+
+
+Main
+================================================================================
+
+Jennifer HY Lin {#title}
+--------------------------------------------------------------------------------
+
+```{r}
+# # Note the special double pipe so we modify the CV object in place
+# CV %<>% print_text_block("intro") 
+```
+
+
+
+Data analytics projects {data-icon=book data-concise=true}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('Data_analytics_projects')
+```
+
+<!-- These breaks just force a new page so section doesnt get cut off -->
+<!-- <br> -->
+<!-- <br> -->
+<!-- <br> -->
+
+Experience {data-icon=suitcase}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('Experience')
+```
+
+
+
+Certification {data-icon=chalkboard-teacher}
+--------------------------------------------------------------------------------
+
+::: aside
+```{r}
+# CV %<>% print_text_block('teaching_experience_aside')
+```
+:::
+
+```{r}
+CV %<>% print_section('Certification')
+```
+
+
+
+Education {data-icon=graduation-cap}
+--------------------------------------------------------------------------------
+
+::: aside
+```{r}
+# CV %<>% print_text_block('industy_experience_aside')
+```
+:::
+
+```{r}
+CV %<>% print_section('Education')
+```
+
+
+
+<!-- Publications {data-icon=book} -->
+<!-- -------------------------------------------------------------------------------- -->
+
+<!-- ::: aside -->
+<!-- ```{r} -->
+<!-- # CV %<>% print_text_block('data_science_writing_aside') -->
+<!-- ``` -->
+<!-- ::: -->
+
+<!-- ```{r} -->
+<!-- CV %<>% print_section('Publications') -->
+<!-- ``` -->
+
+
+
+<!-- Selected Press (About)  {data-icon=newspaper} -->
+<!-- -------------------------------------------------------------------------------- -->
+
+<!-- ```{r} -->
+<!-- CV %<>% print_section('about_me_press') -->
+<!-- ``` -->
+
+
+<!-- <br> -->
+<!-- <br> -->
+
+
+<!-- Selected Press (By)  {data-icon=newspaper} -->
+<!-- -------------------------------------------------------------------------------- -->
+
+<!-- ```{r} -->
+<!-- CV %<>% print_section('by_me_press') -->
+<!-- ``` -->
+
+
+
+<!-- Selected Publications, Posters, and Talks {data-icon=book} -->
+<!-- -------------------------------------------------------------------------------- -->
+
+<!-- ```{r} -->
+<!-- # CV %<>% print_section('academic_articles') -->
+<!-- ``` -->
+
+
+
+<!-- ```{r} -->
+<!-- # CV %<>% print_links() -->
+<!-- ``` -->
+

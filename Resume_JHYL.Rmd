@@ -1,0 +1,26 @@
+---
+title: "Resume"
+author: "Jennifer HY Lin"
+date: '2022-07-22'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r include = FALSE}
+devtools::install_github("nstrayer/datadrivencv")
+```
+```{r}
+library(datadrivencv)
+```
+```{r}
+datadrivencv::use_datadriven_cv(
+  full_name = "Jennifer HY Lin",
+  data_location = "https://docs.google.com/spreadsheets/d/1VIT-4a6PajdSqnyGUusqlJO676NtjY4zVj9Jvy8FAXc/edit#gid=1381329386",
+  pdf_location = "https://github.com/jhylin/Portfolio-projects/Resume_JHYL.pdf",
+  source_location = "https://github.com/jhylin/Portfolio-projects"
+)
+```
+
